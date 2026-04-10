@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="vi">    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nội dung quà tặng</title>
+    <link rel="stylesheet" href="content.css">
+</head>
+<body>
+    <div class="bg-slider">
+        <div class="bg-track">
+            <img src="1.jpg" alt="kiniem">
+            <img src="2.jpg" alt="kiniem">
+            <img src="3.jpg" alt="kiniem">  
+            <img src="4.jpg" alt="kiniem">
+            <img src="5.jpg" alt="kiniem">
+            <img src="6.jpg" alt="kiniem">
+            <img src="7.jpg" alt="kiniem">
+            <img src="8.jpg" alt="kiniem">
+            <img src="9.jpg" alt="kiniem">
+            <img src="10.jpg" alt="kiniem">
+            <img src="11.jpg" alt="kiniem">
+            <img src="12.jpg" alt="kiniem">
+        </div>
+    </div>
+
+    <div class="content-page">
+        <div class="glass-card">
+            <h1>Chào em yêu! ☁️</h1>
+            <p>Cảm ơn em nhá vì em cũng đã nhận quà anh gửi rồi</p>
+            <p>Ở đây anh có 4 cái nút là 4 nội dung anh muốn cho em xem, em cố xem nhá 💙</p>
+            
+            <div class="gift-buttons">
+                <button id="open-gift-button-1">Clip up str nè</button>
+                <button id="open-gift-button-2">Điều anh chưa nói</button>
+                <button id="open-gift-button-3">Xem lại ít kỉ niệm</button>
+                <button id="open-gift-button-4">Ảnh 4 năm của em</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('open-gift-button-1').addEventListener('click', function() {
+            window.open("https://photos.app.goo.gl/QBrC7oNJ38d7Dj2X7", "_blank");
+        });
+        document.getElementById('open-gift-button-2').addEventListener('click', function() {
+            alert("Có điều anh muốn nói với em...");
+        });
+        document.getElementById('open-gift-button-3').addEventListener('click', function() {
+            alert("Hãy cùng nhau nhìn lại những kỷ niệm đẹp đẽ của chúng ta!");
+        });
+        document.getElementById('open-gift-button-4').addEventListener('click', function() {
+            window.open("https://photos.app.goo.gl/7i7ZTNZpbfBrByov5", "_blank");
+        });
+    </script>
+     
+</body>
+</html>

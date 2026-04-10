@@ -121,13 +121,12 @@ autoScrollBackground();
 // 4. SỰ KIỆN KHI BẤM NÚT QUÀ TẶNG
 // ==========================================
     giftButton.addEventListener('click', function() {
-        // Bạn có thể đổi chữ này thành link chuyển trang (window.location.href) 
-        // hoặc mở một popup. Tạm thời mình để hộp thoại siêu dễ thương.
-        alert("Bất ngờ chưaaa! Anh yêu em nhiều lắm á 💕");
+
         
         // Hiệu ứng nổ tim nhỏ khi bấm
         giftButton.innerText = "Đã nhận quà 💌";
         giftButton.style.background = "rgba(255, 255, 255, 0.3)";
+        window.location.href = "content.html"; // Chuyển sang trang nội dung sau khi bấm nút
     });
 
 window.addEventListener('orientationchange', function() {

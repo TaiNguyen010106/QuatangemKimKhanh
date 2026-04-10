@@ -1,0 +1,133 @@
+/* --- CÀI ĐẶT CƠ BẢN --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #e0f4fc; /* Màu nền dự phòng xanh dương siêu nhạt */
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* --- 1. HIỆU ỨNG ẢNH NỀN CHẠY BĂNG CHUYỀN --- */
+.bg-slider {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1; /* Nằm dưới cùng */
+    overflow: hidden;
+    opacity: 0.4; /* Làm mờ ảnh để không bị chói chữ */
+    background-color: #b3e5fc; /* Phủ lớp màu pastel xanh */
+    mix-blend-mode: multiply; /* Hòa trộn màu pastel với ảnh */
+}
+
+.bg-track {
+    display: flex;
+    width: max-content;
+    height: 100%;
+    /* Hiệu ứng trôi từ phải qua trái lặp lại vô tận */
+    animation: scrollBg 30s linear infinite;
+}
+
+.bg-track img {
+    height: 100%;
+    width: auto;
+    object-fit: cover;
+    opacity: 0.8;
+}
+
+@keyframes scrollBg {
+    0% { transform: translateX(0); }
+    /* Trôi đúng 1 nửa chiều dài (tức là qua hết Set 1 thì nó nhảy lại mượt) */
+    100% { transform: translateX(-50%); } 
+}
+
+/* --- 2. BỐ CỤC NỘI DUNG CHÍNH --- */
+.content-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* Hộp kính (Glassmorphism) xanh pastel */
+.glass-card {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(15px); /* Làm nhòe ảnh nền phía sau cái hộp */
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-radius: 20px;
+    padding: 40px;
+    max-width: 800px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(135, 206, 250, 0.3); /* Bóng đổ màu xanh pastel */
+}
+
+.glass-card h1 {
+    color: #4fc3f7; /* Light Blue Pastel đậm một chút */
+    margin-bottom: 15px;
+    font-size: 32px;
+}
+
+.glass-card p {
+    color: #4f7b8c;
+    font-size: 18px;
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+/* --- 3. RESPONSIVE NÚT BẤM (NGANG TRÊN PC, DỌC TRÊN MOBILE) --- */
+.gift-buttons {
+    margin-top: 30px;
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    align-items: stretch;
+    flex-direction: row; /* MẶC ĐỊNH LÀ PC: Các nút nằm ngang */
+    flex-wrap: wrap; /* Nếu màn hình nhỏ một chút tự rớt dòng */
+}
+
+.gift-buttons button {
+    background-color: #81d4fa; /* Màu xanh pastel chính */
+    color: white;
+    border: none;
+    border-radius: 30px;
+    padding: 15px 25px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(129, 212, 250, 0.4);
+    transition: all 0.3s ease;
+    flex: 1; /* Cho các nút tự co giãn bằng nhau */
+    min-width: 150px;
+}
+
+.gift-buttons button:hover {
+    background-color: #4fc3f7; /* Đậm hơn một chút khi di chuột */
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(79, 195, 247, 0.6);
+}
+
+/* ĐIỀU CHỈNH RIÊNG CHO ĐIỆN THOẠI (Màn hình nhỏ hơn 768px) */
+@media screen and (max-width: 768px) {
+    .glass-card {
+        padding: 25px 15px;
+    }
+    
+    .gift-buttons {
+        flex-direction: column; /* MOBILE: Các nút xếp dọc */
+        gap: 12px;
+    }
+
+    .gift-buttons button {
+        width: 100%; /* Trải dài full màn hình điện thoại */
+        padding: 15px;
+    }
+}
