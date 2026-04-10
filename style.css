@@ -1,0 +1,207 @@
+/* --- CÀI ĐẶT CƠ BẢN TÀN TRANG --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    overflow: hidden; 
+    background-color: #020813; 
+    height: 100vh;
+    /* Dùng font mỏng nhẹ để trông thơ mộng hơn */
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    perspective: 1000px; 
+}
+
+/* --- ẢNH NỀN CHUYỂN ĐỘNG --- */
+#moving-bg {
+    position: fixed;
+    top: -5%;  
+    left: -5%;
+    width: 110%;
+    height: 110%;
+    z-index: 0; 
+    /* Ảnh bầu trời sao xanh thẳm lãng mạn */
+    background-image: url('https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?auto=format&fit=crop&w=1920&q=80');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.35; 
+    filter: blur(2px); 
+    transition: transform 0.1s ease-out;
+}
+
+/* --- VÙNG CHỨA HIỆU ỨNG NỀN --- */
+#glow-stage {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; 
+}
+
+/* --- ĐỊNH DẠNG CHUNG CHO CÁC PHẦN TỬ TRÔI --- */
+.glowing-element {
+    position: absolute;
+    color: rgba(255, 255, 255, 0.9); /* Trắng hơi trong suốt */
+    pointer-events: none; 
+    animation: driftUp linear forwards; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* --- ĐỊNH DẠNG VĂN BẢN PHÁT SÁNG (MỀM MẠI) --- */
+.glowing-text {
+    font-weight: 300; /* Chữ mỏng đi trông sẽ thơ hơn */
+    text-shadow: 
+        0 0 10px rgba(135, 206, 250, 0.5), 
+        0 0 20px rgba(135, 206, 250, 0.3);
+    letter-spacing: 1.5px;
+}
+
+/* --- ĐỊNH DẠNG TRÁI TIM PHÁT SÁNG --- */
+.glowing-heart {
+    position: absolute;
+    color: #87cefa; /* Light Sky Blue nhạt nhạt */
+    text-shadow: 0 0 15px rgba(135, 206, 250, 0.8);
+    animation: pulseHeart 2s infinite alternate; /* Tim đập chậm rãi hơn */
+}
+
+/* Đốm lấp lánh (sparkles) quanh trái tim */
+.glowing-heart::before,
+.glowing-heart::after {
+    content: "✧"; /* Đổi sang ngôi sao 4 cánh huyền ảo */
+    position: absolute;
+    color: white;
+    font-size: 0.5em;
+    text-shadow: 0 0 5px white;
+}
+.glowing-heart::before { top: -10%; left: -20%; animation: twinkle 2s infinite; }
+.glowing-heart::after { bottom: 10%; right: -20%; animation: twinkle 1.5s infinite 1s; }
+
+/* --- ĐỊNH DẠNG CÁC ĐỐM SAO PHỤ --- */
+.star-dot {
+    width: 2px;
+    height: 2px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.6);
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+}
+
+/* --- HOẠT ẢNH TRÔI LÊN --- */
+@keyframes driftUp {
+    0% { transform: translateY(0); opacity: 0; }
+    20% { opacity: 1; }
+    80% { opacity: 1; }
+    100% { transform: translateY(-110vh); opacity: 0; }
+}
+
+@keyframes pulseHeart {
+    from { transform: scale(0.95); opacity: 0.6; }
+    to { transform: scale(1.05); opacity: 1; }
+}
+
+@keyframes twinkle {
+    0% { opacity: 0.1; }
+    50% { opacity: 1; }
+    100% { opacity: 0.1; }
+}
+
+/* --- NỘI DUNG CHÍNH TRÊN CÙNG --- */
+.main-content {
+    position: relative;
+    z-index: 2; 
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.main-content img {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 0 40px rgba(135, 206, 250, 0.4); /* Quầng sáng mềm */
+    margin-bottom: 25px;
+    animation: floatingImg 6s ease-in-out infinite; /* Cho ảnh lơ lửng nhè nhẹ */
+}
+
+@keyframes floatingImg {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0px); }
+}
+
+/* --- NÚT BẤM (GIAO DIỆN PHA LÊ / GLASSMORPHISM) --- */
+#gift-button {
+    margin-top: 10px;
+    background: rgba(255, 255, 255, 0.05); /* Màu nền gần như trong suốt */
+    backdrop-filter: blur(10px); /* Làm mờ cảnh vật phía sau nút */
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Viền mỏng tang */
+    color: #fff;
+    border-radius: 40px; 
+    width: 260px;
+    height: 55px;
+    font-size: 18px; 
+    font-weight: 300;
+    letter-spacing: 2px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s ease; 
+    position: relative;
+    overflow: hidden;
+}
+
+#gift-button:hover {
+    background: rgba(255, 255, 255, 0.15); /* Sáng lên chút khi hover */
+    box-shadow: 0 0 20px rgba(135, 206, 250, 0.4);
+    transform: translateY(-2px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+/* =========================================
+   GIAO DIỆN ĐIỆN THOẠI
+   ========================================= */
+#mobile-marquee {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly; 
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.marquee-row {
+    white-space: nowrap;
+    font-size: 22px;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.25); 
+    text-shadow: 0 0 10px rgba(135, 206, 250, 0.2); 
+}
+
+.scroll-left { animation: moveLeft 35s linear infinite; } /* Trôi chậm lại */
+.scroll-right { animation: moveRight 40s linear infinite; }
+
+@keyframes moveLeft { from { transform: translateX(100%); } to { transform: translateX(-200%); } }
+@keyframes moveRight { from { transform: translateX(-200%); } to { transform: translateX(100%); } }
+
+.mobile-only { display: none !important; }
+
+@media screen and (max-width: 768px) {
+    .desktop-only { display: none !important; }
+    .mobile-only { display: flex !important; }
+
+    .main-content img { width: 160px; height: 160px; }
+    #gift-button { width: 220px; font-size: 16px; }
+}
